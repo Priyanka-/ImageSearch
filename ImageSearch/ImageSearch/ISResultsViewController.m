@@ -133,15 +133,13 @@
 - (void) invokeDataFetcher {
 
     [self.datafetcher fetchResultsForQuery:self.lastSearchTerm success:^(NSUInteger responseStartIndex,  NSUInteger responseResultsCount) {
-     
-        // There is slight flickering because of reloading the entire section. With pure insertItems I am seeing duplicates though. Alternative option was to create all cells (64 or less if results are less than that) at first response time, and then just update the images in those cells and the cell dimensions as we get further responses. I tried that but it was painfully slow and some images were just not getting updated until I scrolled up and down.
-           [UIView setAnimationsEnabled:NO];
+          [UIView setAnimationsEnabled:NO];
              [self.collectionView performBatchUpdates:^{
                 [self.collectionView reloadSections:[NSIndexSet indexSetWithIndex:0]];
              } completion:^(BOOL finished) {
                  [UIView setAnimationsEnabled:YES];
              }];
-        
+        // If the first batch of results does not fill up the screen, make a follow up request immediately to fill up the rest of the screen.
         if (self.collectionView.contentSize.height < self.view.bounds.size.height) {
             [self invokeDataFetcher];
         }

@@ -7,6 +7,7 @@
 //
 
 #import "ISDataFetcher.h"
+#import "ISImageCache.h"
 
 @interface ISDataFetcher()
 @property(nonatomic) NSString* currentQuery;
@@ -58,7 +59,7 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
 
 - (void)sendRequest:(NSString *)query success:(void (^)(NSUInteger, NSUInteger))success {
     //send the request asynchronously over a connection
-    [NSURLConnection sendAsynchronousRequest:self.currentRequest queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
+    [NSURLConnection sendAsynchronousRequest:self.currentRequest queue:[ISImageCache singletonInstance].operationQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error)
      {
      self.currentRequest = nil;
      

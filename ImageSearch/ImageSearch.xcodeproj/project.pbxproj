@@ -169,8 +169,8 @@
 				1F41659A195BAAE90020684F /* ISDataFetcher.m */,
 				1FAD2AB9196102A600031ECD /* ISLocalPersistence.h */,
 				1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */,
-				1FFFE4B2196C58C400CD2276 /* ISImageFetchOperation.m */,
 				1FFFE4B4196C6E7F00CD2276 /* ISImageFetchOperation.h */,
+				1FFFE4B2196C58C400CD2276 /* ISImageFetchOperation.m */,
 				1FFFE4B5196C918500CD2276 /* ISImageCache.h */,
 				1FFFE4B6196C919400CD2276 /* ISImageCache.m */,
 			);
