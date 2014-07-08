@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1F07699E195D3B43009B6674 /* ISImageFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F07699D195D3B43009B6674 /* ISImageFetcher.m */; };
-		1F0769D119607921009B6674 /* ISSearchResult.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0769D019607921009B6674 /* ISSearchResult.m */; };
 		1F0769D41960D995009B6674 /* ISSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0769D31960D995009B6674 /* ISSearchViewController.m */; };
 		1F0769D71960E20A009B6674 /* ISFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F0769D61960E20A009B6674 /* ISFooterView.m */; };
 		1F3D7BFC19614AB2003DFAC7 /* libOCMock.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F3D7BFB19614AB2003DFAC7 /* libOCMock.a */; };
@@ -33,6 +31,8 @@
 		1FB3180E19632BF6004CE69D /* ImageSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; };
 		1FB3181819632BF6004CE69D /* ImageSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; };
 		1FB3181919632BF6004CE69D /* ImageSearchKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
+		1FFFE4B3196C58C400CD2276 /* ISImageFetchOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE4B2196C58C400CD2276 /* ISImageFetchOperation.m */; };
+		1FFFE4B7196C919400CD2276 /* ISImageCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FFFE4B6196C919400CD2276 /* ISImageCache.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,10 +81,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		1F07699C195D3B43009B6674 /* ISImageFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISImageFetcher.h; sourceTree = "<group>"; };
-		1F07699D195D3B43009B6674 /* ISImageFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISImageFetcher.m; sourceTree = "<group>"; };
-		1F0769CF19607921009B6674 /* ISSearchResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSearchResult.h; sourceTree = "<group>"; };
-		1F0769D019607921009B6674 /* ISSearchResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSearchResult.m; sourceTree = "<group>"; };
 		1F0769D21960D995009B6674 /* ISSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISSearchViewController.h; sourceTree = "<group>"; };
 		1F0769D31960D995009B6674 /* ISSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISSearchViewController.m; sourceTree = "<group>"; };
 		1F0769D51960E20A009B6674 /* ISFooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISFooterView.h; sourceTree = "<group>"; };
@@ -119,6 +115,10 @@
 		1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLocalPersistence.m; sourceTree = "<group>"; };
 		1FB3180319632BF5004CE69D /* ImageSearchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageSearchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FB3180D19632BF5004CE69D /* ImageSearchKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ImageSearchKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		1FFFE4B2196C58C400CD2276 /* ISImageFetchOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISImageFetchOperation.m; sourceTree = "<group>"; };
+		1FFFE4B4196C6E7F00CD2276 /* ISImageFetchOperation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISImageFetchOperation.h; sourceTree = "<group>"; };
+		1FFFE4B5196C918500CD2276 /* ISImageCache.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISImageCache.h; sourceTree = "<group>"; };
+		1FFFE4B6196C919400CD2276 /* ISImageCache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISImageCache.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,12 +167,12 @@
 			children = (
 				1F416599195BAAE90020684F /* ISDataFetcher.h */,
 				1F41659A195BAAE90020684F /* ISDataFetcher.m */,
-				1F07699C195D3B43009B6674 /* ISImageFetcher.h */,
-				1F07699D195D3B43009B6674 /* ISImageFetcher.m */,
-				1F0769CF19607921009B6674 /* ISSearchResult.h */,
-				1F0769D019607921009B6674 /* ISSearchResult.m */,
 				1FAD2AB9196102A600031ECD /* ISLocalPersistence.h */,
 				1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */,
+				1FFFE4B2196C58C400CD2276 /* ISImageFetchOperation.m */,
+				1FFFE4B4196C6E7F00CD2276 /* ISImageFetchOperation.h */,
+				1FFFE4B5196C918500CD2276 /* ISImageCache.h */,
+				1FFFE4B6196C919400CD2276 /* ISImageCache.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -465,11 +465,11 @@
 				1F4165A4195BB0490020684F /* ISResultsViewCell.m in Sources */,
 				1F0769D71960E20A009B6674 /* ISFooterView.m in Sources */,
 				1F4165AD195CD7510020684F /* ISCollectionViewFlowLayout.m in Sources */,
-				1F07699E195D3B43009B6674 /* ISImageFetcher.m in Sources */,
+				1FFFE4B3196C58C400CD2276 /* ISImageFetchOperation.m in Sources */,
 				1F416579195BA48C0020684F /* ISAppDelegate.m in Sources */,
-				1F0769D119607921009B6674 /* ISSearchResult.m in Sources */,
 				1F416575195BA48C0020684F /* main.m in Sources */,
 				1F41659B195BAAE90020684F /* ISDataFetcher.m in Sources */,
+				1FFFE4B7196C919400CD2276 /* ISImageCache.m in Sources */,
 				1FAD2ABB196102A600031ECD /* ISLocalPersistence.m in Sources */,
 				1F4165A1195BAC240020684F /* ISResultsViewController.m in Sources */,
 				1F0769D41960D995009B6674 /* ISSearchViewController.m in Sources */,
