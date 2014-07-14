@@ -76,7 +76,7 @@
 - (void) fetchFinished:(NSString*)imageURL image:(UIImage*)image {
     if (image) {
         [[ISImageCache singletonInstance] setImage:image forUrl:imageURL];
-        if ([self.imageURL isEqualToString:_imageURL]) {
+        if ([self.imageURL isEqualToString:imageURL]) {
             [self setImage:image];
         }
     }

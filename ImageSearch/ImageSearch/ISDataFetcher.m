@@ -67,35 +67,52 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
          //These results are for a cancelled search; ignore
          return;
      }
-     if ([data length] > 0 && error == nil) {
+     if (data && [data length] > 0 && error == nil) {
          // Use the data
          NSError* jsonError = nil;
-         NSDictionary *jsonDict = [NSJSONSerialization JSONObjectWithData:data
+         id value = [NSJSONSerialization JSONObjectWithData:data
                                                                   options:NSJSONReadingMutableContainers | NSJSONReadingMutableLeaves
                                                                     error:&jsonError];
+         
+         NSDictionary *jsonDict = [value isEqual:[NSNull null]] ? nil : value;
+         
          if (jsonError) {
              //Handle error while parsing JSON
-             
+
          }
          if (jsonDict) {
+
              //pick up the results
-             NSDictionary* responseData = jsonDict[@"responseData"];
-             //verify if this response is for the right search
-             NSDictionary* cursor = responseData[@"cursor"];
-             NSNumber* responseStartIndex = (NSNumber*)cursor[@"currentPageIndex"];
+             value = jsonDict[@"responseData"];
+             NSDictionary* responseData = [value isEqual:[NSNull null]] ? nil : value;
              
-             //TODO: confirm responseStartIndex is as expected
-             NSArray* responseResults = responseData[@"results"];
-             [self.results addObjectsFromArray:responseResults];
-             if (self.results.count == 64) {
-                 self.reachedEndOfResults = YES;
-             }
-             NSUInteger startIndex = [responseStartIndex integerValue];
-             NSUInteger responseCount = responseResults.count;
-             if (success) {
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     success(startIndex, responseCount);
-                 });
+             if (responseData) {
+                 
+                 //verify if this response is for the right search
+                 value = responseData[@"cursor"];
+                 NSDictionary* cursor = [value isEqual:[NSNull null]] ? nil : value;
+                 
+                 value = (NSNumber*)cursor[@"currentPageIndex"];
+                 NSNumber* responseStartIndex = [value isEqual:[NSNull null]] ? nil : value;
+                 
+                 //TODO: confirm responseStartIndex is as expected
+                 value = responseData[@"results"];
+                 NSArray* responseResults = [value isEqual:[NSNull null]] ? nil : value;
+                 
+                 [self.results addObjectsFromArray:responseResults];
+                 if (self.results.count == 64) {
+                     self.reachedEndOfResults = YES;
+                 }
+                 NSUInteger startIndex = [responseStartIndex integerValue];
+                 NSUInteger responseCount = responseResults.count;
+                 
+                 if (success) {
+                     dispatch_async(dispatch_get_main_queue(), ^{
+                         success(startIndex, responseCount);
+                         
+                     });
+                 }
+
              }
              
          }
