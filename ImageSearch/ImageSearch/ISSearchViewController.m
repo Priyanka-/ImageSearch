@@ -31,7 +31,7 @@
     
     UISearchBar* searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, navBarFrame.origin.y + navBarFrame.size.height + 4.0f, self.view.bounds.size.width, 44.0)];
     searchBar.delegate = self;
-    searchBar.placeholder = @"Google Image Search";
+    searchBar.placeholder = NSLocalizedString(@"SearchBarPlaceholder", nil);
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.barStyle = UIBarStyleBlackTranslucent;
     [self.view addSubview:searchBar];
@@ -52,7 +52,7 @@
     tableTitle.textColor = [UIColor blueColor];
     tableTitle.backgroundColor = [tableView backgroundColor];
     tableTitle.font = [UIFont boldSystemFontOfSize:18];
-    tableTitle.text = @"Your search history";
+    tableTitle.text = NSLocalizedString(@"Your search history", nil);
     [tableTitle sizeToFit];
     tableView.tableHeaderView = tableTitle;
     [self.view addSubview:tableView];

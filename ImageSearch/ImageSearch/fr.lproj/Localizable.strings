@@ -1,0 +1,10 @@
+/* 
+  Localizable.strings
+  ImageSearch
+
+  Created by Joshi, Priyanka on 7/14/14.
+  Copyright (c) 2014 testsample. All rights reserved.
+*/
+"SearchHistoryText" = "Votre historique de recherche";
+"EndOfResultsText" = "Fin des résultats!";
+"SearchBarPlaceholder" = "Google Image Search";

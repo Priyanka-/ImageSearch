@@ -17,7 +17,7 @@
         // Initialization code
         UILabel* label = [[UILabel alloc] init];
         label.textColor = [UIColor blueColor];
-        label.text = @"End of results!";
+        label.text = NSLocalizedString(@"End of results!", nil);
         label.textAlignment = NSTextAlignmentCenter;
         [label sizeToFit];
         [self.contentView addSubview:label];

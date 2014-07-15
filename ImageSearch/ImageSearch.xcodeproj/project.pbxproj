@@ -27,6 +27,7 @@
 		1F4165A1195BAC240020684F /* ISResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4165A0195BAC240020684F /* ISResultsViewController.m */; };
 		1F4165A4195BB0490020684F /* ISResultsViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4165A3195BB0490020684F /* ISResultsViewCell.m */; };
 		1F4165AD195CD7510020684F /* ISCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F4165AC195CD7510020684F /* ISCollectionViewFlowLayout.m */; };
+		1F98C167197498340002712A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F98C169197498340002712A /* Localizable.strings */; };
 		1FAD2ABB196102A600031ECD /* ISLocalPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */; };
 		1FB3180E19632BF6004CE69D /* ImageSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; };
 		1FB3181819632BF6004CE69D /* ImageSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; };
@@ -111,6 +112,10 @@
 		1F4165A3195BB0490020684F /* ISResultsViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISResultsViewCell.m; sourceTree = "<group>"; };
 		1F4165AB195CD7510020684F /* ISCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCollectionViewFlowLayout.h; sourceTree = "<group>"; };
 		1F4165AC195CD7510020684F /* ISCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		1F98C1651974975B0002712A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F98C1661974975B0002712A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		1F98C168197498340002712A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F98C16A1974984D0002712A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1FAD2AB9196102A600031ECD /* ISLocalPersistence.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISLocalPersistence.h; sourceTree = "<group>"; };
 		1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISLocalPersistence.m; sourceTree = "<group>"; };
 		1FB3180319632BF5004CE69D /* ImageSearchKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ImageSearchKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -222,14 +227,14 @@
 		1F41656E195BA48C0020684F /* ImageSearch */ = {
 			isa = PBXGroup;
 			children = (
-				1F31887F1963774700B2DF3F /* Model */,
-				1F8138231963660A00545EB7 /* ViewModel */,
-				1FB317FD196323FB004CE69D /* ViewController */,
-				1F416598195BAA860020684F /* View */,
 				1F416577195BA48C0020684F /* ISAppDelegate.h */,
 				1F416578195BA48C0020684F /* ISAppDelegate.m */,
 				1F41657A195BA48C0020684F /* Images.xcassets */,
+				1F31887F1963774700B2DF3F /* Model */,
 				1F41656F195BA48C0020684F /* Supporting Files */,
+				1F416598195BAA860020684F /* View */,
+				1FB317FD196323FB004CE69D /* ViewController */,
+				1F8138231963660A00545EB7 /* ViewModel */,
 			);
 			path = ImageSearch;
 			sourceTree = "<group>";
@@ -237,6 +242,7 @@
 		1F41656F195BA48C0020684F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				1F98C169197498340002712A /* Localizable.strings */,
 				1F416570195BA48C0020684F /* ImageSearch-Info.plist */,
 				1F416571195BA48C0020684F /* InfoPlist.strings */,
 				1F416574195BA48C0020684F /* main.m */,
@@ -409,6 +415,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				fr,
 			);
 			mainGroup = 1F41655C195BA48C0020684F;
 			productRefGroup = 1F416566195BA48C0020684F /* Products */;
@@ -429,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F416573195BA48C0020684F /* InfoPlist.strings in Resources */,
+				1F98C167197498340002712A /* Localizable.strings in Resources */,
 				1F41657B195BA48C0020684F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -529,6 +537,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				1F416572195BA48C0020684F /* en */,
+				1F98C1651974975B0002712A /* fr */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
@@ -537,8 +546,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				1F41658B195BA48C0020684F /* en */,
+				1F98C1661974975B0002712A /* fr */,
 			);
 			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1F98C169197498340002712A /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F98C168197498340002712A /* en */,
+				1F98C16A1974984D0002712A /* fr */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
