@@ -13,7 +13,8 @@
 
 #define kSearchHistoryCellIdentifier @"SearchHistory"
 #define kTableViewTag 0x6000
-
+#define kSearchBarTag 0x6001
+#define kTableTitleTag 0x6002
 
 @interface ISSearchViewController () <UISearchBarDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -21,6 +22,17 @@
 
 @implementation ISSearchViewController
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange:) name:NSCurrentLocaleDidChangeNotification object:nil];
+    }
+    return self;
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 - (void)viewDidLoad
 {
@@ -32,6 +44,7 @@
     UISearchBar* searchBar = [[UISearchBar alloc] initWithFrame:CGRectMake(0.0, navBarFrame.origin.y + navBarFrame.size.height + 4.0f, self.view.bounds.size.width, 44.0)];
     searchBar.delegate = self;
     searchBar.placeholder = NSLocalizedString(@"SearchBarPlaceholder", nil);
+    searchBar.tag = kSearchBarTag;
     searchBar.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     searchBar.barStyle = UIBarStyleBlackTranslucent;
     [self.view addSubview:searchBar];
@@ -52,7 +65,8 @@
     tableTitle.textColor = [UIColor blueColor];
     tableTitle.backgroundColor = [tableView backgroundColor];
     tableTitle.font = [UIFont boldSystemFontOfSize:18];
-    tableTitle.text = NSLocalizedString(@"Your search history", nil);
+    tableTitle.text = NSLocalizedString(@"SearchHistoryText", nil);
+    tableTitle.tag = kTableTitleTag;
     [tableTitle sizeToFit];
     tableView.tableHeaderView = tableTitle;
     [self.view addSubview:tableView];
@@ -70,6 +84,7 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark Helper methods
 /*
 Saves the query in local persistence and then pushes ResultsViewController to act on it
  */
@@ -77,6 +92,19 @@ Saves the query in local persistence and then pushes ResultsViewController to ac
     [[ISLocalPersistence singletonInstance] saveSearch:query];
     ISResultsViewController* resultsViewController = [[ISResultsViewController alloc] initWithQuery:query];
     [self.navigationController pushViewController:resultsViewController animated:YES];
+}
+
+-(void) localeDidChange:(NSNotification*) notification {
+    UIView* view = [self.view viewWithTag:kSearchBarTag];
+    if ([view isKindOfClass:[UISearchBar class]]) {
+        ((UISearchBar*)view).placeholder = NSLocalizedString(@"SearchBarPlaceholder", nil);
+        [view setNeedsLayout];
+    }
+    view = [self.view viewWithTag:kTableTitleTag];
+    if ([view isKindOfClass:[UILabel class]]) {
+        ((UILabel*)view).text = NSLocalizedString(@"SearchHistoryText", nil);
+        [view setNeedsLayout];
+    }
 }
 
 #pragma mark Search delegate

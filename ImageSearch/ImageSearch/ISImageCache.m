@@ -34,7 +34,7 @@
         }];
         _operationQueue = [[NSOperationQueue alloc] init];
         _operationQueue.name = @"ISImageFetcher";
-        _operationQueue.maxConcurrentOperationCount = 10;
+        _operationQueue.maxConcurrentOperationCount = NSOperationQueueDefaultMaxConcurrentOperationCount;
     }
     return self;
 }

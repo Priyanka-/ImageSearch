@@ -10,6 +10,8 @@
 
 @implementation ISFooterView
 
+#define kLabelTag 0x6003
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -17,23 +19,26 @@
         // Initialization code
         UILabel* label = [[UILabel alloc] init];
         label.textColor = [UIColor blueColor];
-        label.text = NSLocalizedString(@"End of results!", nil);
+        label.text = NSLocalizedString(@"EndOfResultsText", nil);
         label.textAlignment = NSTextAlignmentCenter;
         [label sizeToFit];
         [self.contentView addSubview:label];
         self.backgroundColor = [UIColor grayColor];
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(localeDidChange:) name:NSCurrentLocaleDidChangeNotification object:nil];
     }
     return self;
 }
 
-
-/*
-// Only override drawRect: if you perform custom drawing.
-// An empty implementation adversely affects performance during animation.
-- (void)drawRect:(CGRect)rect
-{
-    // Drawing code
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
-*/
+
+-(void) localeDidChange:(NSNotification*) notification {
+    UIView* view = [self.contentView viewWithTag:kLabelTag];
+    if ([view isKindOfClass:[UILabel class]]) {
+        ((UILabel*)view).text = NSLocalizedString(@"EndOfResultsText", nil);
+        [view setNeedsLayout];
+    }
+}
 
 @end
