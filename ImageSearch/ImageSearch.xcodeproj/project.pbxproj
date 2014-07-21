@@ -201,7 +201,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1F31887F1963774700B2DF3F /* Model */ = {
+		1F31887F1963774700B2DF3F /* Data */ = {
 			isa = PBXGroup;
 			children = (
 				1F416599195BAAE90020684F /* ISDataFetcher.h */,
@@ -213,7 +213,7 @@
 				1FFFE4B5196C918500CD2276 /* ISImageCache.h */,
 				1FFFE4B6196C919400CD2276 /* ISImageCache.m */,
 			);
-			name = Model;
+			name = Data;
 			sourceTree = "<group>";
 		};
 		1F3D7BFD19614B43003DFAC7 /* Models */ = {
@@ -266,7 +266,7 @@
 				1F416577195BA48C0020684F /* ISAppDelegate.h */,
 				1F416578195BA48C0020684F /* ISAppDelegate.m */,
 				1F41657A195BA48C0020684F /* Images.xcassets */,
-				1F31887F1963774700B2DF3F /* Model */,
+				1F31887F1963774700B2DF3F /* Data */,
 				1F41656F195BA48C0020684F /* Supporting Files */,
 				1F416598195BAA860020684F /* View */,
 				1FB317FD196323FB004CE69D /* ViewController */,
