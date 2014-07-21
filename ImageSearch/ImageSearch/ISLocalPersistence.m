@@ -55,7 +55,7 @@
         
         NSUInteger index = (mutableSearchHistory.count == 10) ? mutableSearchHistory.count - 1 : mutableSearchHistory.count;
         
-        NSString* number = [NSString stringWithFormat:@"%lu",index];
+        NSString* number = [NSString stringWithFormat:@"%lu",(unsigned long)index];
         
         //Save the query
         [mutableSearchHistory setValue:query forKey:number];
@@ -85,7 +85,7 @@
    if (!self.searchHistory) {
         return nil;
     }
-    NSString* number = [NSString stringWithFormat:@"%lu",index];
+    NSString* number = [NSString stringWithFormat:@"%lu",(unsigned long)index];
     return [self.searchHistory valueForKey:number];
 }
 

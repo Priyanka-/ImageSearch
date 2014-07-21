@@ -8,10 +8,13 @@
 
 #import "ISDataFetcher.h"
 #import "ISImageCache.h"
+#import "ISServiceResponse.h"
+#import "NSObject+IsaacJSONToObject.h"
+#import "Result.h"
 
 @interface ISDataFetcher()
 @property(nonatomic) NSString* currentQuery;
-@property(nonatomic, readwrite) NSMutableArray* results;
+@property(nonatomic, readwrite) NSMutableArray* results; //array of results
 @property(nonatomic) NSMutableURLRequest* currentRequest;
 @property(nonatomic, assign, readwrite) BOOL reachedEndOfResults;
 
@@ -32,19 +35,18 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
 
 - (NSString*) imageURLAtIndex:(NSUInteger)index {
     if (index < self.results.count) {
-        return self.results[index][@"tbUrl"];
+        Result *result = self.results[index];
+        return result.tbUrl;
     }
     return nil;
 }
 
 -(CGSize) sizeOfImageAtIndex:(NSUInteger) index {
     if (index < self.results.count) {
-        NSNumber* heightNumber = (NSNumber*)self.results[index][@"tbHeight"]; //in pixels
-        CGFloat height = [heightNumber floatValue];
-        NSNumber* widthNumber = (NSNumber*)self.results[index][@"tbWidth"]; //in pixels
-        CGFloat width = [widthNumber floatValue];
+        Result *result = self.results[index];
+        CGFloat height = result.tbHeight; //in pixels
+        CGFloat width = result.tbWidth;
         return CGSizeMake(width, height);
-        
     }
     return CGSizeZero;
 }
@@ -53,6 +55,14 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
     CGSize size = [self sizeOfImageAtIndex:index];
     
     CGFloat height = (size.width == 0.0f) ? 0.0f : (size.height * width)/size.width;
+    
+    if (height == 0.0f) {
+        // assume availableWidth won't be zero for practical purposes
+        height = width;
+        
+    }
+
+    
     return CGSizeMake(width, height);
 }
 
@@ -68,6 +78,8 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
          return;
      }
      if (data && [data length] > 0 && error == nil) {
+         
+         
          // Use the data
          NSError* jsonError = nil;
          id value = [NSJSONSerialization JSONObjectWithData:data
@@ -75,45 +87,38 @@ const NSString* serverURL = @"https://ajax.googleapis.com/ajax/services/search/i
                                                                     error:&jsonError];
          
          NSDictionary *jsonDict = [value isEqual:[NSNull null]] ? nil : value;
+        
          
          if (jsonError) {
              //Handle error while parsing JSON
 
          }
          if (jsonDict) {
-
-             //pick up the results
-             value = jsonDict[@"responseData"];
-             NSDictionary* responseData = [value isEqual:[NSNull null]] ? nil : value;
              
-             if (responseData) {
+             ISServiceResponse *model =
+             [jsonDict isc_objectFromJSONWithClass:[ISServiceResponse class]];
+             
+             if (model) {
                  
-                 //verify if this response is for the right search
-                 value = responseData[@"cursor"];
-                 NSDictionary* cursor = [value isEqual:[NSNull null]] ? nil : value;
-                 
-                 value = (NSNumber*)cursor[@"currentPageIndex"];
-                 NSNumber* responseStartIndex = [value isEqual:[NSNull null]] ? nil : value;
-                 
-                 //TODO: confirm responseStartIndex is as expected
-                 value = responseData[@"results"];
-                 NSArray* responseResults = [value isEqual:[NSNull null]] ? nil : value;
-                 
-                 [self.results addObjectsFromArray:responseResults];
-                 if (self.results.count == 64) {
-                     self.reachedEndOfResults = YES;
+                 if (model.responseStatus == 200) {
+                     NSArray* responseResults = model.responseData.results;
+                     [self.results addObjectsFromArray:responseResults];
+                     
+                     if (self.results.count == 64) {
+                         self.reachedEndOfResults = YES;
+                     }
+                     NSUInteger currentPageIndex = model.responseData.cursor.currentPageIndex;
+                     NSUInteger responseCount = responseResults.count;
+                     
+                     if (success) {
+                         dispatch_async(dispatch_get_main_queue(), ^{
+                             success(currentPageIndex, responseCount);
+                             
+                         });
+                     }
                  }
-                 NSUInteger startIndex = [responseStartIndex integerValue];
-                 NSUInteger responseCount = responseResults.count;
                  
-                 if (success) {
-                     dispatch_async(dispatch_get_main_queue(), ^{
-                         success(startIndex, responseCount);
-                         
-                     });
-                 }
-
-             }
+            }
              
          }
          

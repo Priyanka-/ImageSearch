@@ -49,7 +49,7 @@
 
 - (void) setImageURL:(NSString *)imageURL size:(CGSize)size {
      _imageURL = imageURL;
-    self.size = size;
+     self.size = size;
     UIImage* image = [[ISImageCache singletonInstance] getImageForUrl:_imageURL];
     if (image) {
         [self setImage:image];
