@@ -9,4 +9,6 @@ This project is an exercise in
  - collection view UI
  - local storage
  
- I would like to acknowledge using Apache 2.0 licensed Isaac library(https://github.com/linkedin/Isaac/) to parse JSON into data models for this project.
+This project uses Google Image search API(https://developers.google.com/image-search/v1/jsondevguide) to do image search. 
+
+I would like to acknowledge using Apache 2.0 licensed Isaac library(https://github.com/linkedin/Isaac/) to parse JSON into data models for this project.
