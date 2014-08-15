@@ -2,7 +2,7 @@
 //  ISCollectionViewFlowLayout.h
 //  ImageSearch
 //
-//  Created by Joshi, Priyanka on 6/26/14.
+//  Created by Joshi, Priyanka on 8/15/14.
 //  Copyright (c) 2014 testsample. All rights reserved.
 //
 

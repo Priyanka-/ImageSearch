@@ -38,6 +38,7 @@
 		1F980304197D89EE00B40C5D /* Cursor.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F980303197D89EE00B40C5D /* Cursor.m */; };
 		1F980307197D96A100B40C5D /* Page.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F980306197D96A100B40C5D /* Page.m */; };
 		1F98030A197D975200B40C5D /* Result.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F980309197D975200B40C5D /* Result.m */; };
+		1F980333197E23B100B40C5D /* ISResultSeparator.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F980332197E23B100B40C5D /* ISResultSeparator.m */; };
 		1F98C167197498340002712A /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F98C169197498340002712A /* Localizable.strings */; };
 		1FAD2ABB196102A600031ECD /* ISLocalPersistence.m in Sources */ = {isa = PBXBuildFile; fileRef = 1FAD2ABA196102A600031ECD /* ISLocalPersistence.m */; };
 		1FB3180E19632BF6004CE69D /* ImageSearchKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1FB3180319632BF5004CE69D /* ImageSearchKit.framework */; };
@@ -146,6 +147,8 @@
 		1F980306197D96A100B40C5D /* Page.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Page.m; sourceTree = "<group>"; };
 		1F980308197D974700B40C5D /* Result.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Result.h; sourceTree = "<group>"; };
 		1F980309197D975200B40C5D /* Result.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Result.m; sourceTree = "<group>"; };
+		1F980331197E239900B40C5D /* ISResultSeparator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISResultSeparator.h; sourceTree = "<group>"; };
+		1F980332197E23B100B40C5D /* ISResultSeparator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISResultSeparator.m; sourceTree = "<group>"; };
 		1F98C1651974975B0002712A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F98C1661974975B0002712A /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1F98C168197498340002712A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -312,6 +315,8 @@
 				1F4165A3195BB0490020684F /* ISResultsViewCell.m */,
 				1F0769D51960E20A009B6674 /* ISFooterView.h */,
 				1F0769D61960E20A009B6674 /* ISFooterView.m */,
+				1F980331197E239900B40C5D /* ISResultSeparator.h */,
+				1F980332197E23B100B40C5D /* ISResultSeparator.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -585,6 +590,7 @@
 				1F9802C21979CFEE00B40C5D /* NSObject+IsaacCopyModel.m in Sources */,
 				1F9802C11979CFEE00B40C5D /* NSObject+IsaacSafeKVO.m in Sources */,
 				1F416575195BA48C0020684F /* main.m in Sources */,
+				1F980333197E23B100B40C5D /* ISResultSeparator.m in Sources */,
 				1F980304197D89EE00B40C5D /* Cursor.m in Sources */,
 				1F41659B195BAAE90020684F /* ISDataFetcher.m in Sources */,
 				1F9802C31979CFEE00B40C5D /* NSObject+IsaacJSONToObject.m in Sources */,

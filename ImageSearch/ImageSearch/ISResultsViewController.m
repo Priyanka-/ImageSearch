@@ -26,7 +26,7 @@
 - (id)initWithQuery:(NSString*)query
 {
     
-    UICollectionViewFlowLayout* layout = [[UICollectionViewFlowLayout alloc] init];
+    UICollectionViewFlowLayout* layout = [[ISCollectionViewFlowLayout alloc] init];
     layout.minimumLineSpacing = 10.0f;
     layout.minimumInteritemSpacing = ([[UIScreen mainScreen] applicationFrame].size.width / 12.0f);
     layout.scrollDirection = UICollectionViewScrollDirectionVertical;

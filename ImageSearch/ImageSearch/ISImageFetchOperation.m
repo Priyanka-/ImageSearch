@@ -29,12 +29,12 @@
     if (self.isCancelled || !self.imageUrl || [self.imageUrl isEqualToString:@""]) {
         return;
     }
-    self.queuePriority = NSOperationQualityOfServiceUserInitiated;
     NSString* escapedUrl = [self.imageUrl stringByAddingPercentEscapesUsingEncoding:NSUnicodeStringEncoding];
     @try {
         NSData* imgData = [[NSData alloc] initWithContentsOfURL:[NSURL URLWithString:escapedUrl]];
         self.image = [UIImage imageWithData:imgData scale:[UIScreen mainScreen].scale];
         [self.delegate fetchFinished:self.imageUrl image:self.image];
+        
     }@catch(NSException* error) {
         //failed to download. TODO: add error handling
     }

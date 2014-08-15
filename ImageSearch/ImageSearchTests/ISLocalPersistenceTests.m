@@ -35,7 +35,7 @@
     
     [OCMStub([userDefaultsMock standardUserDefaults]) andReturn:userDefaultsMock];
     
-    NSUInteger savedQueries = [ISLocalPersistence numberOfSavedQueries];
+    NSUInteger savedQueries = [[ISLocalPersistence singletonInstance] numberOfSavedQueries];
     
     XCTAssertEqual(savedQueries, savedQueries, @"Validating that numberOfSavedQueries returns 0 when there is no search history");
 }
@@ -49,7 +49,7 @@
     
     [OCMStub([userDefaultsMock standardUserDefaults]) andReturn:userDefaultsMock];
     
-    NSUInteger savedQueries = [ISLocalPersistence numberOfSavedQueries];
+    NSUInteger savedQueries = [[ISLocalPersistence singletonInstance] numberOfSavedQueries];
     
     XCTAssertEqual(savedQueries, dict.count, @"Validating that numberOfSavedQueries returns  a valid value when there is some valid search history");
 }
@@ -61,7 +61,7 @@
     
     [OCMStub([userDefaultsMock standardUserDefaults]) andReturn:userDefaultsMock];
     
-    NSString* query = [ISLocalPersistence queryAtIndex:0];
+    NSString* query = [[ISLocalPersistence singletonInstance] queryAtIndex:0];
     
     XCTAssertNil(query, @"Validating that queryAtIndex returns nil when there is no search history");
 }
@@ -75,11 +75,11 @@
     
     [OCMStub([userDefaultsMock standardUserDefaults]) andReturn:userDefaultsMock];
     
-    NSString* query = [ISLocalPersistence queryAtIndex:0];
+    NSString* query = [[ISLocalPersistence singletonInstance] queryAtIndex:0];
     
     XCTAssertEqual(query, @"cat", @"Validating that queryAtIndex returns valid query when there is valid search history");
     
-    query = [ISLocalPersistence queryAtIndex:1];
+    query = [[ISLocalPersistence singletonInstance] queryAtIndex:1];
     XCTAssertEqual(query, @"dog", @"Validating that queryAtIndex returns valid query when there is valid search history");
 }
 
